@@ -1,4 +1,4 @@
-#!/bin/sh -lx
+#!/bin/sh -l
 
 BRANCH_NAME=${GITHUB_REF##refs/heads/}
 CURRENT_VERSION=`git-semv now --url "$GITHUB_REPOSITORY" 2>/dev/null`
