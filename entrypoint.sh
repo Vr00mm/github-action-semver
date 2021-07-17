@@ -12,5 +12,5 @@ echo "::set-output name=CURRENT_VERSION::${CURRENT_VERSION}"
 [[ "$BRANCH_NAME" == "develop" ]] &&  NEXT_VERSION=`git-semv minor --url "$GITHUB_REPOSITORY" --pre-name dev`
 [[ "$BRANCH_NAME" == "feature"* ]] &&  NEXT_VERSION=`git-semv minor --url "$GITHUB_REPOSITORY" --pre-name feature`
 [[ "$BRANCH_NAME" == "hotfix"* ]] &&  NEXT_VERSION=`git-semv now --url "$GITHUB_REPOSITORY"`-hotfix
-echo "::set-output name=NEXT_VERSION::${NEXT_VERSION}"  \
+echo "::set-output name=NEXT_VERSION::${NEXT_VERSION}"
 exit 0
