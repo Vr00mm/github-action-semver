@@ -1,16 +1,6 @@
 #!/bin/sh -l
 
-[ -z ${1+x} ] && echo "You should provide the branch name as argument" && exit 1
-BRANCH_NAME="${1}"
-
-printenv
-ls -lah
-pwd
-
-[ ! -d "/repo" ] && echo "The git repository should be available at /repo" && exit 1
-cd /repo
-
-ls -lah
+BRANCH_NAME=${GITHUB_REF##refs/heads/}
 
 echo "get current version"
 CURRENT_VERSION=`git-semv now 2>/dev/null`
