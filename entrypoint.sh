@@ -1,8 +1,13 @@
-#!/bin/sh -l
+#!/bin/sh -lx
 
+echo "at least iam there"
 BRANCH_NAME=${GITHUB_REF##refs/heads/}
+echo BRANCH_NAME is $BRANCH_NAME
 
 CURRENT_VERSION=`git-semv now --url "$GITHUB_ACTION_REPOSITORY" 2>/dev/null`
+
+echo CURRENT_VERSION is $CURRENT_VERSION
+echo here we go
 
 [ "${CURRENT_VERSION}" == "" ] && git-semv minor --url "$GITHUB_ACTION_REPOSITORY"  && exit 0
 

@@ -1,12 +1,6 @@
 name: 'Container Action semv'
 description: 'Generate sementic version from current branch and last tags'
 author: 'Remi ZIOLKOWSKI'
-inputs: 
-  branchName:
-    description: 'The name of the current branch'
-    default: ''
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ inputs.branchName }}
