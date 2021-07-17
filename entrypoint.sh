@@ -5,6 +5,9 @@ BRANCH_NAME=${GITHUB_REF##refs/heads/}
 echo "get current version"
 CURRENT_VERSION=`git-semv now 2>/dev/null`
 
+pwd
+tree /github
+
 echo "check current version not empty"
 [ "${CURRENT_VERSION}" == "" ] && git-semv minor && exit 0
 
