@@ -1,12 +1,12 @@
-name: 'Container Action Template'
-description: 'Get started with Container actions'
-author: 'GitHub'
+name: 'Container Action semv'
+description: 'Generate sementic version from current branch and last tags'
+author: 'Remi ZIOLKOWSKI'
 inputs: 
-  myInput:
-    description: 'Input to use'
-    default: 'world'
+  branchName:
+    description: 'The name of the current branch'
+    default: ''
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.myInput }}
+    - ${{ inputs.branchName }}
