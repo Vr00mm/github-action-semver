@@ -2,11 +2,11 @@
 
 BRANCH_NAME=${GITHUB_REF##refs/heads/}
 
-CURRENT_VERSION=`git-semv now 2>/dev/null`
+CURRENT_VERSION=`git-semv now --url "$GITHUB_ACTION_REPOSITORY" 2>/dev/null`
 
-[ "${CURRENT_VERSION}" == "" ] && git-semv minor && exit 0
+[ "${CURRENT_VERSION}" == "" ] && git-semv minor --url "$GITHUB_ACTION_REPOSITORY"  && exit 0
 
-[[ "$BRANCH_NAME" == "main" ]] && git-semv minor
-[[ "$BRANCH_NAME" == "develop" ]] && git-semv minor --pre-name dev
-[[ "$BRANCH_NAME" == "feature"* ]] && git-semv minor --pre-name feature
-[[ "$BRANCH_NAME" == "hotfix"* ]] && echo -n $(git semv now)-hotfix
+[[ "$BRANCH_NAME" == "main" ]] && git-semv minor --url "$GITHUB_ACTION_REPOSITORY"
+[[ "$BRANCH_NAME" == "develop" ]] && git-semv minor --url "$GITHUB_ACTION_REPOSITORY" --pre-name dev
+[[ "$BRANCH_NAME" == "feature"* ]] && git-semv minor --url "$GITHUB_ACTION_REPOSITORY" --pre-name feature
+[[ "$BRANCH_NAME" == "hotfix"* ]] && echo -n $(git-semv now --url "$GITHUB_ACTION_REPOSITORY")-hotfix
