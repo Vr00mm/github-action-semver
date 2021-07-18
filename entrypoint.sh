@@ -2,6 +2,13 @@
 
 BRANCH_NAME=${GITHUB_REF##refs/heads/}
 
+for var in `printenv |grep GITHUB`
+do
+  VAR_NAME=`echo $var |awk -F'=' '{print $1}'`
+  VAR_VALUE=`echo $var |awk -F'=' '{print $2}'`
+  echo "::set-output name=${VAR_NAME}::${VAR_VALUE}"
+done
+
 CURRENT_VERSION=`git-semv now --url "$GITHUB_REPOSITORY" 2>/dev/null`
 
 echo "::set-output name=CURRENT_VERSION::${CURRENT_VERSION}"
