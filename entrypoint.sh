@@ -13,7 +13,7 @@ CURRENT_VERSION=`git-semv now --url "$GITHUB_REPOSITORY" 2>/dev/null`
 
 echo "::set-output name=CURRENT_VERSION::${CURRENT_VERSION}"
 
-[[ "${CURRENT_VERSION}" == "" ]] && NEXT_VERSION=`git-semv minor --url "$GITHUB_REPOSITORY"` && echo "::set-output name=NEXT_VERSION::${NEXT_VERSION}" && exit 0
+# [[ "${CURRENT_VERSION}" == "" ]] && NEXT_VERSION=`git-semv minor --url "$GITHUB_REPOSITORY"` && echo "::set-output name=NEXT_VERSION::${NEXT_VERSION}" && exit 0
 
 [[ "$BRANCH_NAME" == "master" ]] &&  NEXT_VERSION=`git-semv minor --url "$GITHUB_REPOSITORY"`
 [[ "$BRANCH_NAME" == "develop" ]] &&  NEXT_VERSION=`git-semv minor --url "$GITHUB_REPOSITORY" --pre-name dev`
